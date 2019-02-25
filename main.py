@@ -21,15 +21,7 @@ class Knight(Element):
         self.special_item = None
 
     def __gt__(self, other):
-        self_attack = 0.5 + self.attack
-        if self.special_item:
-            self_attack += self.special_item.attack
-
-        other_defence = other.defence
-        if other.special_item:
-            other_defence += other.special_item.defence
-
-        return self_attack > other_defence
+        return self.attack + 0.5 > other.defence
 
     def output_repr(self):
         position = None if self.row is None else [self.row, self.column]
@@ -46,10 +38,11 @@ class Knight(Element):
         self.attack, self.defence = 0, 0
         self.status = death_type
         position_map[self.row][self.column]['knights'].remove(self)
-        self.row, self.column = None, None
-        self.special_item = None
+        if death_type == "DROWNED":
+            self.row, self.column = None, None
         if self.special_item:
             self.special_item.make_available(position_map)
+        self.special_item = None
 
     def perform_attack(self, other, position_map):
         if self > other:
@@ -59,6 +52,8 @@ class Knight(Element):
 
     def take_item(self, item, position_map):
         self.special_item = item
+        self.attack += item.attack
+        self.defence += item.defence
         item.assign(position_map)
 
     def get_new_position(self, direction):
@@ -93,13 +88,12 @@ class Knight(Element):
         knights, items = self.get_elements_on_position(new_row, new_column, position_map)
         self.change_position(new_row, new_column, position_map)
 
-        if len(knights) == 2:
-            self.perform_attack(knights[0], position_map)
-
-        if items:
-            if self.status == "LIVE" and not self.special_item:
+        if items and not self.special_item:
                 best_item = sorted(items)[0]
                 self.take_item(best_item, position_map)
+
+        if len(knights) == 2:
+            self.perform_attack(knights[0], position_map)
 
 
 class Item(Element):
@@ -227,13 +221,10 @@ def testing_execution():
     game = Game()
 
     instructions = list()
-    """
-    instructions.append(('R', 'S'))
-    instructions.append(('R', 'S'))
-    instructions.append(('B', 'E'))
-    instructions.append(('G', 'N'))
-    instructions.append(('Y', 'N'))
-    """
+
+    instructions.append(('Y', 'S'))
+    instructions.append(('Y', 'S'))
+
     game.execute_instructions(instructions)
 
     game.print_map()
