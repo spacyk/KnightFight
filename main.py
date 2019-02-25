@@ -9,9 +9,6 @@ class Element:
         self.position = position
         self.symbol = symbol
 
-    def __repr__(self):
-        return f'{self.symbol}'
-
 
 class Knight(Element):
 
@@ -132,7 +129,6 @@ class Item(Element):
 
 
 class Game:
-
     valid_directions = ['N', 'E', 'S', 'W']
 
     def __init__(self):
