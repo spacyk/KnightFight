@@ -24,7 +24,7 @@ pytest test.py
 ```
 
 ### Preview
-Starting positions of the knights (in the corners) and 4 special items.
+Starting positions of the knights (in the corners) and 4 special items in the middle.
 ```
 |R|_|_|_|_|_|_|Y|
 |_|_|_|_|_|_|_|_|
