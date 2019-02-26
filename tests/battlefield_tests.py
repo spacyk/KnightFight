@@ -1,4 +1,4 @@
-from battlefield import Battlefield
+from knight_fight.battlefield import Battlefield
 
 
 def test_drowned_no_item():
