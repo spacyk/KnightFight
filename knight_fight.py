@@ -1,10 +1,11 @@
 import json
 
-from element import Element, Item, Knight
+from element import Item, Knight
 
 
 def serialize_element(obj):
-    if isinstance(obj, Element):
+    """Serialize item element"""
+    if isinstance(obj, Item):
         serial = repr(obj)
         return serial
     else:
@@ -70,15 +71,6 @@ class KnightFight:
             print(graphic_row)
         print()
 
-    def create_output(self):
-        """Creates output json to see the status of the game"""
-        output = {}
-        for knight in self.knights.values():
-            output[knight.name] = knight.output_repr()
-        for item in self.items:
-            output[item.name] = item.output_repr()
-        return output
-
     def is_valid_instruction(self, instruction):
         if ':' not in instruction:
             return False
@@ -114,6 +106,16 @@ class KnightFight:
                     raise ValueError("Invalid instruction provided")
         return instructions
 
+    def create_output(self):
+        """Creates output json to see the status of the game"""
+        output = {}
+        for knight in self.knights.values():
+            output[knight.name] = knight.output_repr()
+        for item in self.items:
+            output[item.name] = item.output_repr()
+        return output
+
     def save_output(self):
+        """Save json output to the output file"""
         with open('final_state.json', 'w') as f:
             json.dump(self.create_output(), f, default=serialize_element)
