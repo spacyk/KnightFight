@@ -11,7 +11,7 @@ Check `ASSIGNEMENT.md` for the details.
 
 ### Usage
 ```
-python main.py
+python knight_fight/main.py
 ```
 Script has to be executed from the same folder as the `moves.txt` file is in.
 
@@ -20,7 +20,7 @@ Script has to be executed from the same folder as the `moves.txt` file is in.
 ```
 pip install -r requirements.txt
 
-pytest test.py
+pytest tests/battlefield_test.py
 ```
 
 ### Preview
