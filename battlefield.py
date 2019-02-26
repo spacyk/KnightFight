@@ -12,7 +12,7 @@ def serialize_element(obj):
         raise TypeError("Type not serializable")
 
 
-class KnightFight:
+class Battlefield:
     valid_directions = ['N', 'E', 'S', 'W']
 
     def __init__(self):

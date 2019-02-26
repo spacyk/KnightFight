@@ -1,11 +1,11 @@
-from knight_fight import KnightFight
+from battlefield import Battlefield
 
 
 def main():
-    fight = KnightFight()
-    instructions = fight.load_file_instructions()
-    fight.execute_instructions(instructions)
-    fight.save_output()
+    battlefield = Battlefield()
+    instructions = battlefield.load_file_instructions()
+    battlefield.execute_instructions(instructions)
+    battlefield.save_output()
 
 
 if __name__ == "__main__":
