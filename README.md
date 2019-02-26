@@ -20,7 +20,7 @@ Script has to be executed from the same folder as the `moves.txt` file is in.
 ```
 pip install -r requirements.txt
 
-pytest tests/battlefield_test.py
+pytest tests/battlefield_tests.py
 ```
 
 ### Preview
