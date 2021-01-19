@@ -1,7 +1,9 @@
-# KnightFight
+# Knight fight
 
 ### Description
-Knights fighting with deadly weapons.
+Game-like input processing script that renders the position of the figures on 2D board according to the rules of the game and provided input instructions.
+
+Rules of the game are specified in the `ASSIGNEMENT.md`.
 
 Script will load and validate knights movement instructions from `moves.txt`. If everythink is ok and instructions are
 valid, they will be processed by the game (knights will move and fight). After that, json output with the game info will be
